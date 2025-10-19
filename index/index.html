@@ -8,6 +8,7 @@
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
+  <script src="todo.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Custom Styles -->
@@ -81,7 +82,17 @@
                     <!-- Add more projects here -->
                 </div>
             </section>
-
+<section class="col-12 section-box" id="jquery-app">
+    <h2>Interactive jQuery To-Do List</h2>
+    <p>
+        <label for="newItemText">New item:</label>
+        <input type="text" id="newItemText" autofocus>
+        <button id="addBtn">Add</button>
+    </p>
+    <ol id="todoList">
+        <!-- Items will be dynamically added here -->
+    </ol>
+</section>
             <!-- Useful Links Section -->
             <aside class="col-md-6 section-box" id="useful-links">
                 <h2>Useful Links</h2>
