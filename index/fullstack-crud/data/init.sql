@@ -1,12 +1,8 @@
-CREATE DATABASE test;
-USE test;
-
-CREATE TABLE users (
-  id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  firstname VARCHAR(30) NOT NULL,
-  lastname VARCHAR(30) NOT NULL,
-  email VARCHAR(50) NOT NULL,
-  age INT(3),
-  location VARCHAR(50),
-  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+<?php
+$host       = "localhost";
+$username   = "root";
+$password   = "root"; // MAMP uses 'root' as password by default
+$dbname     = "test";
+$dsn        = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+$options    = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+?>

@@ -2,47 +2,46 @@
 require "../config.php";
 require "../common.php";
 
-if (isset($_POST['submit'])) {
-    try {
-        $connection = new PDO($dsn, $username, $password, $options);
+try {
+    $connection = new PDO($dsn, $username, $password, $options);
+    echo "<p style='color: green;'>✅ Connected successfully to database: $dbname</p>";
 
-        $sql = "SELECT * FROM users WHERE location = :location";
-        $location = $_POST['location'];
+    // Retrieve all users (no filter)
+    $sql = "SELECT * FROM users";
+    $statement = $connection->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetchAll();
 
-        $statement = $connection->prepare($sql);
-        $statement->bindParam(':location', $location, PDO::PARAM_STR);
-        $statement->execute();
-        $result = $statement->fetchAll();
-    } catch (PDOException $error) {
-        echo $sql . "<br>" . $error->getMessage();
-    }
-}
-?>
+    if ($result && count($result) > 0) {
+        echo "<h2>Results</h2>";
+        echo "<table border='1' cellpadding='6' cellspacing='0'>";
+        echo "<tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Location</th>
+                <th>Date</th>
+              </tr>";
 
-<?php include "templates/header.php"; ?>
-
-<h2>Find users by location</h2>
-
-<form method="post">
-    <label for="location">Location</label>
-    <input type="text" id="location" name="location">
-    <input type="submit" name="submit" value="View Results">
-</form>
-
-<?php
-if (isset($_POST['submit'])) {
-    if ($result && $statement->rowCount() > 0) {
-        echo "<table><thead><tr><th>ID</th><th>First</th><th>Last</th><th>Email</th><th>Age</th><th>Location</th><th>Date</th></tr></thead><tbody>";
         foreach ($result as $row) {
-            echo "<tr><td>".escape($row["id"])."</td><td>".escape($row["firstname"])."</td><td>".escape($row["lastname"])."</td><td>".escape($row["email"])."</td><td>".escape($row["age"])."</td><td>".escape($row["location"])."</td><td>".escape($row["date"])."</td></tr>";
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['firstname']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['lastname']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['age']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['date']) . "</td>";
+            echo "</tr>";
         }
-        echo "</tbody></table>";
+        echo "</table>";
     } else {
-        echo "<p>No results found for ".escape($_POST['location']).".</p>";
+        echo "<p style='color: red;'>⚠️ No rows found in the <strong>users</strong> table.</p>";
     }
+
+} catch (PDOException $error) {
+    echo "<p style='color: red;'>❌ Error: " . $error->getMessage() . "</p>";
 }
 ?>
-
-<a href="index.php">Back to home</a>
-
-<?php include "templates/footer.php"; ?>
