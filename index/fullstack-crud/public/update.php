@@ -2,39 +2,54 @@
 require "../config.php";
 require "../common.php";
 
-try{
+try {
     $connection = new PDO($dsn, $username, $password, $options);
-    $sql = "Select * FROM user";
+    $sql = "SELECT * FROM users";
     $statement = $connection->prepare($sql);
     $statement->execute();
-    $result = $statement->fetchALL();
+    $result = $statement->fetchAll();
 } catch (PDOException $error) {
-    echo $sql . "<br>" . $error->getMessage();
+    echo "<p style='color:red;'>❌ Error: " . $error->getMessage() . "</p>";
 }
 ?>
 
-<?php include "templates/header.php"; ?>
+<?php require "templates/header.php"; ?>
 
 <h2>Update Users</h2>
 
-<table>
-<thead><tr><th>ID</th><th>First</th><th>Last</th><th>Email</th><th>Age</th><th>Location</th><th>Date</th><th>Edit</th></tr></thead>
-<tbody>
-<?php foreach ($result as $row): ?>
-<tr>
-<td><?= escape($row["id"]); ?></td>
-<td><?= escape($row["firstname"]); ?></td>
-<td><?= escape($row["lastname"]); ?></td>
-<td><?= escape($row["email"]); ?></td>
-<td><?= escape($row["age"]); ?></td>
-<td><?= escape($row["location"]); ?></td>
-<td><?= escape($row["date"]); ?></td>
-<td><a href="update-single.php?id=<?= escape($row["id"]); ?>">Edit</a></td>
-</tr>
-<?php endforeach; ?>
-</tbody>
+<?php if ($result && $statement->rowCount() > 0) : ?>
+<table border="1" cellpadding="6">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($result as $row) : ?>
+    <tr>
+      <td><?= escape($row["id"]); ?></td>
+      <td><?= escape($row["firstname"]); ?></td>
+      <td><?= escape($row["lastname"]); ?></td>
+      <td><?= escape($row["email"]); ?></td>
+      <td><?= escape($row["age"]); ?></td>
+      <td><?= escape($row["location"]); ?></td>
+      <td><?= escape($row["date"]); ?></td>
+      <td><a href="update-single.php?id=<?= escape($row["id"]); ?>">Edit</a></td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
 </table>
+<?php else : ?>
+<p style="color:red;">⚠️ No users found in database.</p>
+<?php endif; ?>
 
 <a href="index.php">Back to home</a>
 
-<?php include "templates/footer.php"; ?>
+<?php require "templates/footer.php"; ?>
