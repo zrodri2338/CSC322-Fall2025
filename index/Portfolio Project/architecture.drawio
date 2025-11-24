@@ -1,0 +1,42 @@
+<diagram name="Architecture" id="ArchitectureDiagram">
+  <mxGraphModel dx="1292" dy="706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0">
+    <root>
+      <mxCell id="0"/>
+      <mxCell id="1" parent="0"/>
+
+      <!-- User Browser -->
+      <mxCell id="2" value="User Browser (Client/UI)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+        <mxGeometry x="120" y="80" width="200" height="80" as="geometry"/>
+      </mxCell>
+
+      <!-- Frontend -->
+      <mxCell id="3" value="Frontend (HTML/CSS/JS or React)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+        <mxGeometry x="120" y="200" width="200" height="80" as="geometry"/>
+      </mxCell>
+
+      <!-- Backend -->
+      <mxCell id="4" value="Backend API (Node.js + Express)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00" vertex="1" parent="1">
+        <mxGeometry x="420" y="200" width="230" height="80" as="geometry"/>
+      </mxCell>
+
+      <!-- MySQL -->
+      <mxCell id="5" value="MySQL Database" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450" vertex="1" parent="1">
+        <mxGeometry x="420" y="350" width="200" height="120" as="geometry"/>
+      </mxCell>
+
+      <!-- Arrows -->
+      <mxCell id="6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000" edge="1" parent="1" source="2" target="3">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+
+      <mxCell id="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000" edge="1" parent="1" source="3" target="4">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+
+      <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000" edge="1" parent="1" source="4" target="5">
+        <mxGeometry relative="1" as="geometry"/>
+      </mxCell>
+
+    </root>
+  </mxGraphModel>
+</diagram>
