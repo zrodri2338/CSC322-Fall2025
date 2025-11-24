@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-23T12:00:00.000Z" agent="5.0 (Windows)">
+  <diagram id="ERD1" name="ERD">
+    <mxGraphModel dx="1162" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- USERS TABLE -->
+        <mxCell id="usersTable" value="USERS&#xa;----------------&#xa;id (PK)&#xa;name&#xa;email&#xa;password_hash&#xa;created_at" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="220" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- TASKS TABLE -->
+        <mxCell id="tasksTable" value="TASKS&#xa;----------------&#xa;id (PK)&#xa;user_id (FK)&#xa;title&#xa;description&#xa;priority&#xa;status&#xa;due_date&#xa;created_at" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- CATEGORIES TABLE -->
+        <mxCell id="categoriesTable" value="CATEGORIES&#xa;----------------&#xa;id (PK)&#xa;name" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="260" width="200" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- TASK_CATEGORIES TABLE -->
+        <mxCell id="taskCategoriesTable" value="TASK_CATEGORIES&#xa;----------------&#xa;id (PK)&#xa;task_id (FK)&#xa;category_id (FK)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="360" y="300" width="260" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- RELATION: USERS → TASKS -->
+        <mxCell id="edge1" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="usersTable" target="tasksTable">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- RELATION: TASKS → TASK_CATEGORIES -->
+        <mxCell id="edge2" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="tasksTable" target="taskCategoriesTable">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- RELATION: CATEGORIES → TASK_CATEGORIES -->
+        <mxCell id="edge3" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="categoriesTable" target="taskCategoriesTable">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

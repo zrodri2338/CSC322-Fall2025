@@ -1,0 +1,29 @@
+<diagram name="Wireframe" id="WireframeDiagram">
+  <mxGraphModel dx="1292" dy="706" grid="1">
+    <root>
+      <mxCell id="0"/>
+      <mxCell id="1" parent="0"/>
+
+      <!-- Header -->
+      <mxCell id="20" value="Header / Navigation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999" vertex="1" parent="1">
+        <mxGeometry x="40" y="40" width="700" height="70" as="geometry"/>
+      </mxCell>
+
+      <!-- Sidebar -->
+      <mxCell id="21" value="Sidebar Menu" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1e1e1;strokeColor=#777777" vertex="1" parent="1">
+        <mxGeometry x="40" y="130" width="150" height="400" as="geometry"/>
+      </mxCell>
+
+      <!-- Task List -->
+      <mxCell id="22" value="Task List Area" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999" vertex="1" parent="1">
+        <mxGeometry x="210" y="130" width="530" height="260" as="geometry"/>
+      </mxCell>
+
+      <!-- Productivity Chart -->
+      <mxCell id="23" value="Productivity Chart" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999" vertex="1" parent="1">
+        <mxGeometry x="210" y="410" width="530" height="170" as="geometry"/>
+      </mxCell>
+
+    </root>
+  </mxGraphModel>
+</diagram>
