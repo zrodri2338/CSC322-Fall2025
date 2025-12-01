@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Productivity Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Productivity Hub</h1>
+    <p>Manage your tasks, priorities, and deadlines</p>
+  </header>
+
+  <main>
+    <section class="task-form">
+      <h2>Add Task</h2>
+      <form id="taskForm">
+        <div class="form-row">
+          <label for="title">Title *</label>
+          <input type="text" id="title" required />
+        </div>
+
+        <div class="form-row">
+          <label for="description">Description</label>
+          <textarea id="description" rows="3"></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="priority">Priority</label>
+          <select id="priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="due_date">Due Date</label>
+          <input type="date" id="due_date" />
+        </div>
+
+        <button type="submit">Add Task</button>
+      </form>
+      <p id="formMessage" class="message"></p>
+    </section>
+
+    <section class="task-list">
+      <h2>Tasks</h2>
+      <div class="filters">
+        <label for="statusFilter">Filter by status:</label>
+        <select id="statusFilter">
+          <option value="all" selected>All</option>
+          <option value="todo">To Do</option>
+          <option value="in-progress">In Progress</option>
+          <option value="done">Done</option>
+        </select>
+      </div>
+      <ul id="tasksContainer"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
