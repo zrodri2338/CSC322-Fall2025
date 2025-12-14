@@ -134,15 +134,26 @@ taskForm.addEventListener("submit", async e => {
 
 async function updateTaskStatus(id, status) {
   try {
-    const res = await fetch(`${API_BASE}/${id}/status`, {
-      method: "PATCH",
+    // get the current task so we can send a full PUT update
+    const getRes = await fetch(`${API_BASE}/${id}`);
+    if (!getRes.ok) throw new Error("Task not found");
+    const task = await getRes.json();
+
+    const updatedTask = {
+      title: task.title,
+      description: task.description,
+      status: status,
+      priority: task.priority,
+      due_date: task.due_date
+    };
+
+    const res = await fetch(`${API_BASE}/${id}`, {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status })
+      body: JSON.stringify(updatedTask)
     });
 
-    if (!res.ok) {
-      throw new Error("Failed to update task status");
-    }
+    if (res.status !== 204) throw new Error("Failed to update status");
 
     fetchTasks();
   } catch (err) {
@@ -150,6 +161,7 @@ async function updateTaskStatus(id, status) {
     alert("Error updating status");
   }
 }
+
 
 async function deleteTask(id) {
   try {
